@@ -21,3 +21,28 @@
   color: #fff;
   padding: 15px;
 }
+form{
+  margin: 2vmax;
+}
+.control{
+  width: 30%;
+  margin-bottom: 1vmax;
+  display: flex;
+  flex-direction: column;
+}
+.control input{
+  padding: .3vmax;
+  font-size: 1.5vmax;
+}
+input[type=submit]{
+  padding: .5vmax;
+  width: 30%;
+  background-color: blue;
+  color:white;
+  border-radius: 1vmax;
+  font-size: 1.5vmax;
+  transition: all 500ms ease-in-out;
+}
+input[type=submit]:hover{
+  transform: scale(1.03);
+}

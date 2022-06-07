@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Mainbody = () => {
+const Mainbody = ({employee}) => {
+    //const employee = props.employee;
     return (
         <section className="mainbody">
-            <p>This is main body section</p>
+            <h2>Deatails of Employee</h2>
+            <p>Name of Employee: {employee.name}</p>
+            <p>Phone No: {employee.phone}</p>
+            <p>Company: {employee.company}</p>
+            <p>Address: {employee.address}</p>
         </section>
     )
 }
