@@ -6,12 +6,13 @@ import { Footer } from "./components/Footer";
 import Mainbody from "./components/Mainbody";
 
 function App() {
-  const [employee, setEmployee] = useState({
+  const [employees, setEmployees] = useState([{
+    id: "6636634747747",
     name: "Shailaja Khanal",
     address: "Tartan Vista Drive, Alexandria",
     phone: "3012328979",
     company: "Sage Computing Inc."
-  });
+  }]);
   //here useState is react hook and employee is state value, and setEmployee is method to
   //change the value, these are destructured from useState;
    //let admin_name = "Shailaja Khanal";
@@ -19,8 +20,8 @@ function App() {
     <div className="App">
       <div className="container">
         <main>
-          <Head setEmployee={setEmployee}/>
-          <Mainbody employee={employee} />
+          <Head employees={employees} setEmployees={setEmployees}/>
+          <Mainbody employees={employees} />
         </main>
         <Footer />
       </div>

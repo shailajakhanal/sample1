@@ -1,16 +1,25 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { v4 as uuid } from 'uuid';
 
 const Header = (props) => {
-    const {setEmployee} = props;
-    const [name, setName] = useState("");
-    const [address, setAddress] = useState("");
-    const [phone, setPhone] = useState("");
-    const [company, setCompany] = useState("");
-
+    const {employees, setEmployees} = props;
+    const [employee, setEmployee ] = useState({
+        name:"",
+        address: "",
+        phone:"",
+        company:""    });
+    const handleChange =(e) =>{
+        const {name, value} = e.target;
+        setEmployee({...employee, [name]: value})
+    }
     const submitHandler = (e) => {
        e.preventDefault();
-       const newEmp = {name, address, phone, company};
-       setEmployee(newEmp);
+       const tempEmployees = [...employees];
+       employee.id = uuid();
+       tempEmployees.push(employee);
+       setEmployees(tempEmployees);
+    //    const newEmp = {name, address, phone, company};
+    //    setEmployees(newEmp);
     }
     return (
         <header className="header">
@@ -21,8 +30,8 @@ const Header = (props) => {
                     type="text" 
                     id="name" 
                     name="name"
-                    value={name}
-                    onChange={(e) =>setName(e.target.value)}
+                    value={employee.name}
+                    onChange={handleChange}
                 />
                 </div>
                 <div className='control'>
@@ -31,8 +40,8 @@ const Header = (props) => {
                     type="text" 
                     id="address" 
                     name="address"
-                    value={address}
-                    onChange={(e) =>setAddress(e.target.value)}
+                    value={employee.address}
+                    onChange={handleChange}
                 />
                 </div>
                 <div className='control'>
@@ -41,8 +50,8 @@ const Header = (props) => {
                     type="text" 
                     id="phone" 
                     name="phone"
-                    value={phone}
-                    onChange={(e) =>setPhone(e.target.value)}
+                    value={employee.phone}
+                    onChange={handleChange}
                 />
                 </div>
                 <div className='control'>
@@ -51,8 +60,8 @@ const Header = (props) => {
                     type="text" 
                     id="company" 
                     name="company"
-                    value={company}
-                    onChange={(e) =>setCompany(e.target.value)}
+                    value={employee.company}
+                    onChange={handleChange}
                 />
                 </div>
                 <input type="submit" value="Submit"/>
