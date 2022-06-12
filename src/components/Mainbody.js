@@ -1,7 +1,15 @@
 import React from 'react'
 
-const Mainbody = ({employees}) => {
+const Mainbody = ({employees, setEmployees}) => {
     //const employee = props.employee;
+
+    const deleteHandler = (id) => {
+        const tempEmployees = employees.filter(emp =>emp.id !== id);
+        setEmployees(tempEmployees);
+    };
+    const updateHandler =(id) =>{
+        alert("Update button clicked of id"+id);
+    };
     return (
         <section className="mainbody">
             {/* <h2>Deatails of Employee</h2>
@@ -24,8 +32,8 @@ const Mainbody = ({employees}) => {
                        <td>{emp.phone}</td>
                        <td>{emp.company}</td>
                        <td>{emp.address}</td>
-                       <td><button>Update</button></td>
-                       <td><button>Delete</button></td>
+                       <td><button onClick={() =>updateHandler(emp.id)}>Update</button></td>
+                       <td><button onClick={() =>deleteHandler(emp.id)}>Delete</button></td>
                    </tr>
                ))}
             </table>

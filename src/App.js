@@ -21,7 +21,7 @@ function App() {
       <div className="container">
         <main>
           <Head employees={employees} setEmployees={setEmployees}/>
-          <Mainbody employees={employees} />
+          <Mainbody employees={employees} setEmployees={setEmployees}/>
         </main>
         <Footer />
       </div>

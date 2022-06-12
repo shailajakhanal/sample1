@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import { v4 as uuid } from 'uuid';
+import validate from '../formValidation';
 
 const Header = (props) => {
     const {employees, setEmployees} = props;
+    const [err, setErr] = useState({})
     const [employee, setEmployee ] = useState({
         name:"",
         address: "",
@@ -14,13 +16,23 @@ const Header = (props) => {
     }
     const submitHandler = (e) => {
        e.preventDefault();
+       if(!validate(employee, setErr)){
+           alert("Form input validation fail");
+           return;
+       }
        const tempEmployees = [...employees];
        employee.id = uuid();
        tempEmployees.push(employee);
        setEmployees(tempEmployees);
+       setEmployee({
+        name:"",
+        address: "",
+        phone:"",
+        company:""    })
     //    const newEmp = {name, address, phone, company};
     //    setEmployees(newEmp);
     }
+    
     return (
         <header className="header">
             <form onSubmit={submitHandler}>
@@ -33,6 +45,7 @@ const Header = (props) => {
                     value={employee.name}
                     onChange={handleChange}
                 />
+                {err.name && <p className="error">{err.name}</p>}
                 </div>
                 <div className='control'>
                 <label htmlFor="address">Address</label>
@@ -43,6 +56,7 @@ const Header = (props) => {
                     value={employee.address}
                     onChange={handleChange}
                 />
+                {err.address && <p className="error">{err.address}</p>}
                 </div>
                 <div className='control'>
                 <label htmlFor="phone">Phone</label>
@@ -53,6 +67,7 @@ const Header = (props) => {
                     value={employee.phone}
                     onChange={handleChange}
                 />
+                {err.phone && <p className="error">{err.phone}</p>}
                 </div>
                 <div className='control'>
                 <label htmlFor="company">Company</label>
@@ -63,6 +78,7 @@ const Header = (props) => {
                     value={employee.company}
                     onChange={handleChange}
                 />
+                {err.company && <p className="error">{err.company}</p>}
                 </div>
                 <input type="submit" value="Submit"/>
                 

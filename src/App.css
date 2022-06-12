@@ -46,3 +46,7 @@ input[type=submit]{
 input[type=submit]:hover{
   transform: scale(1.03);
 }
+.error{
+  color:red;
+  font-size:10px;
+}
